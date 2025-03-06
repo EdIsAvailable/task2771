@@ -11,14 +11,15 @@
 using namespace std;
 
 Server* _server;
-
+Logger* _logger;
 int main()
 {
 
     _server = new Server();
     _server->MainProcess();
-
+    _logger = new Logger();
     delete _server; //  освободить память
+    delete _logger;
     return 0;
 }
 
