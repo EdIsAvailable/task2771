@@ -570,12 +570,15 @@ CMakeFiles/chat2771.dir/Logger.cpp.o: /home/server/task2771/srvr/Logger.cpp \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/std_mutex.h \
   /usr/include/c++/13/bits/stl_algobase.h \
+  /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
   /usr/include/c++/13/bits/stl_function.h \
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
   /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_uninitialized.h \
+  /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/streambuf.tcc \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
@@ -584,6 +587,7 @@ CMakeFiles/chat2771.dir/Logger.cpp.o: /home/server/task2771/srvr/Logger.cpp \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
+  /usr/include/c++/13/bits/vector.tcc \
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
   /usr/include/c++/13/clocale \
@@ -606,7 +610,6 @@ CMakeFiles/chat2771.dir/Logger.cpp.o: /home/server/task2771/srvr/Logger.cpp \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
-  /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/limits \
   /usr/include/c++/13/mutex \
@@ -623,6 +626,7 @@ CMakeFiles/chat2771.dir/Logger.cpp.o: /home/server/task2771/srvr/Logger.cpp \
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
+  /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
@@ -857,6 +861,7 @@ CMakeFiles/chat2771.dir/Main.cpp.o: /home/server/task2771/srvr/Main.cpp \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/std_mutex.h \
+  /usr/include/c++/13/bits/std_thread.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
@@ -880,6 +885,7 @@ CMakeFiles/chat2771.dir/Main.cpp.o: /home/server/task2771/srvr/Main.cpp \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/this_thread_sleep.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unique_lock.h \
   /usr/include/c++/13/bits/unique_ptr.h \
@@ -935,6 +941,7 @@ CMakeFiles/chat2771.dir/Main.cpp.o: /home/server/task2771/srvr/Main.cpp \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/system_error \
+  /usr/include/c++/13/thread \
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
@@ -2675,6 +2682,10 @@ CMakeFiles/chat2771.dir/db.cpp.o: /home/server/task2771/srvr/db.cpp \
 
 /usr/include/linux/stddef.h:
 
+/usr/include/c++/13/thread:
+
+/usr/include/c++/13/bits/this_thread_sleep.h:
+
 /usr/include/asm-generic/sockios.h:
 
 /usr/include/asm-generic/socket.h:
@@ -2864,6 +2875,8 @@ CMakeFiles/chat2771.dir/db.cpp.o: /home/server/task2771/srvr/db.cpp \
 /usr/include/c++/13/istream:
 
 /usr/include/boost/core/checked_delete.hpp:
+
+/usr/include/c++/13/bits/std_thread.h:
 
 /usr/include/c++/13/initializer_list:
 
