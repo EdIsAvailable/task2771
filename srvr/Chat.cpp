@@ -3,13 +3,13 @@
 
 using namespace std;
 
-Chat::Chat() {}
-
+// Конструктор
+Chat::Chat() : logger("log.txt") {}
+// Добавление сообщения в лог
 void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text) {
-    // Сохраняем сообщение в базе данных
-    saveMessage(userFrom, userTo, text);
+    string message = "От: " + userFrom + " | Кому: " + userTo + " | Сообщение: " + text;
+    logger.writeLog(message);
 }
-
 void Chat::ViewAllMessages(void) {
     try {
         auto con = connectToDatabase();
@@ -84,6 +84,40 @@ void Chat::ViewMessagesForAllUsers(void) {
     }
 }
 
+// Просмотр всех сообщений из лога
+void Chat::ViewAllMessagesFromLog(void) {
+    logger.readLog(); // Сбрасываем указатель чтения
+    string line;
+    cout << "Все сообщения из лога:" << endl;
+    while (!(line = logger.readLog()).empty()) {
+        cout << line << endl;
+    }
+}
+
+// Просмотр сообщений для конкретного пользователя из лога
+void Chat::ViewMessagesForUserLog(const std::string& login) {
+    logger.readLog(); // Сбрасываем указатель чтения
+    string line;
+    cout << "Сообщения для пользователя из лога" << login << ":" << endl;
+    while (!(line = logger.readLog()).empty()) {
+        if (line.find("Кому: " + login) != string::npos) {
+            cout << line << endl;
+        }
+    }
+}
+
+// Просмотр сообщений для всех пользователей из лога
+void Chat::ViewMessagesForAllUsersLog(void) {
+    logger.readLog(); // Сбрасываем указатель чтения
+    string line;
+    cout << "Сообщения для всех пользователей из лога:" << endl;
+    while (!(line = logger.readLog()).empty()) {
+        if (line.find("Кому: ALL") != string::npos) {
+            cout << line << endl;
+        }
+    }
+}
+
 Chat::~Chat() {
-    // В данном случае не нужно освобождать память для сообщений, так как они хранятся в БД
+    // В данном случае не нужно освобождать память для сообщений, так как они хранятся в БД и log.txt
 }

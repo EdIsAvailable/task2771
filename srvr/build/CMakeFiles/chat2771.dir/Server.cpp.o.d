@@ -261,4 +261,14 @@ CMakeFiles/chat2771.dir/Server.cpp.o: \
  /usr/include/cppconn/statement.h /usr/include/cppconn/config.h \
  /usr/include/inttypes.h /usr/include/cppconn/resultset.h \
  /usr/include/cppconn/resultset_metadata.h \
- /usr/include/cppconn/datatype.h /usr/include/cppconn/resultset.h
+ /usr/include/cppconn/datatype.h /usr/include/cppconn/resultset.h \
+ /home/server/task2771/srvr/Logger.h /usr/include/c++/13/fstream \
+ /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/mutex \
+ /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
+ /usr/include/c++/13/cstdint /usr/include/c++/13/limits \
+ /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/bits/std_mutex.h \
+ /usr/include/c++/13/bits/unique_lock.h /usr/include/c++/13/shared_mutex

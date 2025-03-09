@@ -281,12 +281,12 @@ CMakeFiles/chat2771.dir/Main.cpp.o: /home/server/task2771/srvr/Main.cpp \
  /usr/include/inttypes.h /usr/include/cppconn/resultset.h \
  /usr/include/cppconn/resultset_metadata.h \
  /usr/include/cppconn/datatype.h /usr/include/cppconn/resultset.h \
- /home/server/task2771/srvr/Server.h \
- /home/server/task2771/srvr/UserRepository.h \
  /home/server/task2771/srvr/Logger.h /usr/include/c++/13/fstream \
  /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/mutex \
  /usr/include/c++/13/bits/std_mutex.h \
- /usr/include/c++/13/bits/unique_lock.h /usr/include/c++/13/shared_mutex
+ /usr/include/c++/13/bits/unique_lock.h /usr/include/c++/13/shared_mutex \
+ /home/server/task2771/srvr/Server.h \
+ /home/server/task2771/srvr/UserRepository.h
