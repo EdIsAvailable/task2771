@@ -23,6 +23,9 @@ public:
 private:
     std::fstream logFile;               // Поток для работы с файлом
     mutable std::shared_mutex mutex_;   // Мьютекс для потокобезопасности
+    //std::mutex mutex_;
     std::vector<std::string> logLines;  // Вектор для хранения строк лога
     size_t readPosition = 0;           // Текущая позиция чтения
 };
+
+

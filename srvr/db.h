@@ -12,9 +12,9 @@
 
 using namespace sql;
 using namespace std;
-std::unique_ptr<sql::Connection> connectToDatabase();
-void registerUser(const std::string& username, const std::string& passwordHash);
-void saveMessage(const std::string& sender, const std::string& receiver, const std::string& message);
-void fetchMessages(const std::string& receiver);
+unique_ptr<sql::Connection> connectToDatabase();
+void registerUser(const string& username, const string& passwordHash);
+void saveMessage(const string& sender, const string& receiver, const string& message);
+void fetchMessages(const string& receiver);
 
 #endif

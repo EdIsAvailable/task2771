@@ -16,13 +16,10 @@ Server* _server;
 
 int main() {
 
-    //Logger logger;
     _server = new Server();
     _server->MainProcess();
-    //_logger = new Logger();
-    //  освободим память
+
     delete _server; 
-    //delete _logger;
     return 0;
 }
 

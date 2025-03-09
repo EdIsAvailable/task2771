@@ -1,14 +1,15 @@
-#ifndef CHAT_H
-#define CHAT_H
+#pragma once
 
 #include <string>
 #include <memory>
+#include <iostream>
+#include <stdexcept>
 #include "db.h" // Подключаем файл с функциями работы с БД
 #include "Logger.h" // Подключаем файл с функциями записи в log.txt
 
 class Chat {
 
-    Logger logger;
+    //Logger logger;
 
 public:
     Chat();
@@ -23,8 +24,6 @@ public:
     ~Chat();
 
     private:
-   
+    Logger logger;
 
 };
-
-#endif // CHAT_H

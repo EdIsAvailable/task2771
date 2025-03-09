@@ -6,7 +6,7 @@ using namespace std;
 // Конструктор
 Chat::Chat() : logger("log.txt") {}
 // Добавление сообщения в лог
-void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text) {
+void Chat::AddMessage(const string& userFrom, const string& userTo, const string& text) {
     string message = "От: " + userFrom + " | Кому: " + userTo + " | Сообщение: " + text;
     saveMessage(userFrom, userTo, text);
     logger.writeLog(message);
@@ -14,10 +14,10 @@ void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, co
 void Chat::ViewAllMessages(void) {
     try {
         auto con = connectToDatabase();
-        std::unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
+        unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
             "SELECT SenderID, ReceiverID, MessageText, Timestamp FROM Messages"
         ));
-        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+        unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
         cout << "Всего сообщений в базе:" << endl;
         while (res->next()) {
@@ -32,19 +32,19 @@ void Chat::ViewAllMessages(void) {
         }
     }
     catch (sql::SQLException& e) {
-        std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
+        cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << endl;
     }
 }
 
-void Chat::ViewMessagesForUser(const std::string& login) {
+void Chat::ViewMessagesForUser(const string& login) {
     try {
         auto con = connectToDatabase();
-        std::unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
+        unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
             "SELECT SenderID, MessageText, Timestamp FROM Messages "
             "WHERE ReceiverID = (SELECT UserID FROM Users WHERE Username = ?)"
         ));
         pstmt->setString(1, login);
-        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+        unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
         cout << "Сообщения для пользователя " << login << ":" << endl;
         while (res->next()) {
@@ -57,18 +57,18 @@ void Chat::ViewMessagesForUser(const std::string& login) {
         }
     }
     catch (sql::SQLException& e) {
-        std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
+        cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << endl;
     }
 }
 
 void Chat::ViewMessagesForAllUsers(void) {
     try {
         auto con = connectToDatabase();
-        std::unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
+        unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
             "SELECT SenderID, MessageText, Timestamp FROM Messages "
             "WHERE ReceiverID = (SELECT UserID FROM Users WHERE Username = 'ALL')"
         ));
-        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+        unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
         cout << "Сообщения для всех пользователей:" << endl;
         while (res->next()) {
@@ -81,7 +81,7 @@ void Chat::ViewMessagesForAllUsers(void) {
         }
     }
     catch (sql::SQLException& e) {
-        std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
+        cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << endl;
     }
 }
 
@@ -96,7 +96,7 @@ void Chat::ViewAllMessagesFromLog(void) {
 }
 
 // Просмотр сообщений для конкретного пользователя из лога
-void Chat::ViewMessagesForUserLog(const std::string& login) {
+void Chat::ViewMessagesForUserLog(const string& login) {
     logger.readLog(); // Сбрасываем указатель чтения
     string line;
     cout << "Сообщения для пользователя из лога" << login << ":" << endl;
@@ -122,3 +122,4 @@ void Chat::ViewMessagesForAllUsersLog(void) {
 Chat::~Chat() {
     // В данном случае не нужно освобождать память для сообщений, так как они хранятся в БД и log.txt
 }
+    

@@ -9,13 +9,6 @@ Logger::Logger(const std::string& filename) {
     }
 }
 
-// Деструктор
-Logger::~Logger() {
-    if (logFile.is_open()) {
-        logFile.close();
-    }
-}
-
 // Метод для записи строки в лог
 void Logger::writeLog(const std::string& message) {
     std::unique_lock<std::shared_mutex> lock(mutex_);
@@ -45,6 +38,15 @@ std::string Logger::readLog() {
         return logLines[readPosition++];
     }
     else {
+        readPosition = 0; // Сбрасываем позицию для следующего чтения
         return ""; // Возвращаем пустую строку, если строк больше нет
     }
 }
+
+// Деструктор
+Logger::~Logger() {
+    if (logFile.is_open()) {
+        logFile.close();
+    }
+}
+
