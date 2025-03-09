@@ -13,15 +13,16 @@
 using namespace std;
 
 Server* _server;
-Logger* _logger;
 
 int main() {
+
+    //Logger logger;
     _server = new Server();
     _server->MainProcess();
-    _logger = new Logger();
+    //_logger = new Logger();
     //  освободим память
     delete _server; 
-    delete _logger;
+    //delete _logger;
     return 0;
 }
 

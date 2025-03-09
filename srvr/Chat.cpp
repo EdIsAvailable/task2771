@@ -8,6 +8,7 @@ Chat::Chat() : logger("log.txt") {}
 // Добавление сообщения в лог
 void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text) {
     string message = "От: " + userFrom + " | Кому: " + userTo + " | Сообщение: " + text;
+    saveMessage(userFrom, userTo, text);
     logger.writeLog(message);
 }
 void Chat::ViewAllMessages(void) {

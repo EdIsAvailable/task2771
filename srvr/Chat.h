@@ -7,8 +7,12 @@
 #include "Logger.h" // Подключаем файл с функциями записи в log.txt
 
 class Chat {
+
+    Logger logger;
+
 public:
     Chat();
+    
     void AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text);
     void ViewAllMessages(void);
     void ViewMessagesForUser(const std::string& login);
@@ -19,7 +23,7 @@ public:
     ~Chat();
 
     private:
-    Logger logger; // Объект Logger для работы с логами
+   
 
 };
 
