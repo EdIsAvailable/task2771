@@ -1,16 +1,15 @@
+
 #pragma once
 
 #include <string>
 #include <memory>
 #include <iostream>
 #include <stdexcept>
-#include "db.h" // Подключаем файл с функциями работы с БД
+#include <functional>
+#include "db.h"     // Подключаем файл с функциями работы с БД
 #include "Logger.h" // Подключаем файл с функциями записи в log.txt
 
 class Chat {
-
-    //Logger logger;
-
 public:
     Chat();
     
@@ -23,7 +22,8 @@ public:
     void ViewMessagesForAllUsersLog(void);
     ~Chat();
 
-    private:
+private:
     Logger logger;
 
+    void filterAndDisplayLog(const std::function<bool(const std::string&)>& filter, const std::string& header);
 };
