@@ -14,12 +14,12 @@ public:
     Chat();
     
     void AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text);
-    void ViewAllMessages(void);
+    void ViewAllMessages();
     void ViewMessagesForUser(const std::string& login);
-    void ViewMessagesForAllUsers(void);
-    void ViewAllMessagesFromLog(void);
+    void ViewMessagesForAllUsers();
+    void ViewAllMessagesFromLog();
     void ViewMessagesForUserLog(const std::string& login);
-    void ViewMessagesForAllUsersLog(void);
+    void ViewMessagesForAllUsersLog();
     ~Chat();
 
 private:
