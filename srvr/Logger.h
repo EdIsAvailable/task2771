@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <fstream>
@@ -18,5 +17,5 @@ public:
     
 private:
     std::fstream logFile;
-    mutable std::shared_mutex mutex_;
+    std::shared_mutex mutex_;
 };

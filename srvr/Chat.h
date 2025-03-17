@@ -1,5 +1,5 @@
 
-#pragma once
+/*#pragma once
 
 #include <string>
 #include <memory>
@@ -27,3 +27,27 @@ private:
 
     void filterAndDisplayLog(const std::function<bool(const std::string&)>& filter, const std::string& header);
 };
+
+*/
+
+#ifndef CHAT_H
+#define CHAT_H
+
+#include <string>
+#include <memory>
+#include "Logger.h"
+
+class Chat {
+public:
+    Chat();
+    void AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text);
+    void ViewAllMessages(void);
+    void ViewMessagesForUser(const std::string& login);
+    void ViewMessagesForAllUsers(void);
+    ~Chat();
+
+private:
+    Logger logger;
+};
+
+#endif // CHAT_H
