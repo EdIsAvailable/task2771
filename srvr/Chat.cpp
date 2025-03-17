@@ -135,7 +135,7 @@ Chat::~Chat() {
 
 using namespace std;
 
-Chat::Chat() : logger("chat_log.txt") {} // Initialize logger with default filename
+Chat::Chat() : logger("log.txt") {} // Initialize logger with default filename
 /*
 void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text) {
     // Save message to database

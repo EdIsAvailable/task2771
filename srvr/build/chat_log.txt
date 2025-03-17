@@ -1,7 +1,0 @@
-Chat instance destroyed
-Viewed messages for user: dddd
-Viewed messages for all users
-Viewed messages for user: A
-Viewed messages for all users
-Viewed all messages
-Chat instance destroyed
