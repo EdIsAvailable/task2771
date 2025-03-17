@@ -1,0 +1,5 @@
+[2025-03-17 20:33:37] Viewed messages for user: dddd
+[2025-03-17 20:33:37] Viewed messages for all users
+[2025-03-17 20:34:10] Message from 'dddd' to 'ALL': Hello, everybody!
+[2025-03-17 20:34:15] Viewed all messages
+[2025-03-17 20:34:15] Chat instance destroyed

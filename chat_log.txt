@@ -15,3 +15,5 @@ Chat instance destroyed
 [2025-03-17 20:15:14] Message from 'dddd' to 'A': where log?
 [2025-03-17 20:15:24] Viewed messages for user: A
 [2025-03-17 20:15:24] Viewed messages for all users
+[2025-03-17 20:22:43] Viewed all messages
+[2025-03-17 20:22:43] Chat instance destroyed
