@@ -10,3 +10,8 @@ Viewed messages for user: A
 Viewed messages for all users
 Viewed all messages
 Chat instance destroyed
+[2025-03-17 20:14:44] Viewed messages for user: dddd
+[2025-03-17 20:14:44] Viewed messages for all users
+[2025-03-17 20:15:14] Message from 'dddd' to 'A': where log?
+[2025-03-17 20:15:24] Viewed messages for user: A
+[2025-03-17 20:15:24] Viewed messages for all users

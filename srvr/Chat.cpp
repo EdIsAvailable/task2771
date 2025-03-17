@@ -136,7 +136,7 @@ Chat::~Chat() {
 using namespace std;
 
 Chat::Chat() : logger("chat_log.txt") {} // Initialize logger with default filename
-
+/*
 void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text) {
     // Save message to database
     saveMessage(userFrom, userTo, text);
@@ -144,7 +144,23 @@ void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, co
     // Log the message action
     logger.writeLog("Message sent from " + userFrom + " to " + userTo);
 }
-
+*/
+void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text) {
+    try {
+        // Save message to database
+        saveMessage(userFrom, userTo, text);
+        
+        // Log the message action with more detailed information
+        std::string logMessage = "Message from '" + userFrom + "' to '" + userTo + "': " + text;
+        logger.writeLog(logMessage);
+        
+        std::cout << "Message saved successfully!" << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error saving message: " << e.what() << std::endl;
+        logger.writeLog("ERROR: Failed to save message - " + std::string(e.what()));
+    }
+}
 void Chat::ViewAllMessages(void) {
     try {
         auto con = connectToDatabase();
