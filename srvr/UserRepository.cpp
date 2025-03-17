@@ -42,7 +42,7 @@ Acc* UserRepository::NewUser()
     }
     return nullptr;
 }
-
+/*
 Acc* UserRepository::FindUser(string login)
 {
     // Поиск пользователя в БД
@@ -65,7 +65,31 @@ Acc* UserRepository::FindUser(string login)
     }
     return nullptr;
 }
+*/
 
+Acc* UserRepository::FindUser(string login)
+{
+    // Поиск пользователя в БД
+    try {
+        auto con = connectToDatabase();
+        std::unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
+            "SELECT Username, PasswordHash FROM Users WHERE Username = ?"
+        ));
+        pstmt->setString(1, login);
+        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+        if (res->next()) {
+            string username = res->getString("Username");
+            string passwordHash = res->getString("PasswordHash");
+            // Add a dummy name since we don't store names in the database
+            return new Acc(username, passwordHash, username); 
+        }
+    }
+    catch (sql::SQLException& e) {
+        std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
+    }
+    return nullptr;
+}
 Acc* UserRepository::AuthorizeUser(string login, string pwd)
 {
     Acc* user = FindUser(login);

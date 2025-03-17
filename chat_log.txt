@@ -1,0 +1,12 @@
+Chat instance destroyed
+Viewed all messages
+Chat instance destroyed
+Viewed all messages
+Chat instance destroyed
+Viewed messages for user: dddd
+Viewed messages for all users
+Message sent from dddd to A
+Viewed messages for user: A
+Viewed messages for all users
+Viewed all messages
+Chat instance destroyed
