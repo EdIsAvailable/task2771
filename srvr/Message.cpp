@@ -1,6 +1,7 @@
 #include "Message.h"
 #pragma warning(disable : 4996) //_CRT_SECURE_NO_WARNINGS для localtime
 
+
 // Конструктор класса Message создаёт сообщение в котором указываем отправителя, получателя и тело сообщения, дата и время отправленного сообщения добавляется автоматически
 Message::Message(string userFrom, string userTo, string text) : _userFrom(userFrom), _userTo(userTo), _text(text)
 {

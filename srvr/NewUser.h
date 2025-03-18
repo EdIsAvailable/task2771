@@ -1,7 +1,11 @@
 #pragma once
+
 #include<iostream>
 #include <string>
+
+
 using namespace std;
+
 class NewUser
 {
 protected: string _login; // Логин пользователя

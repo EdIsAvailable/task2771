@@ -1,9 +1,11 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <ctime>
+
 using namespace std;
 
-#pragma once
+
 class Message
 {
 	string _userFrom, _userTo, _text;

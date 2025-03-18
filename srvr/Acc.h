@@ -1,6 +1,10 @@
 #pragma once
+
 #include "NewUser.h"
+
 using namespace std;
+
+
 class Acc : public NewUser
 {
 	//string& _login; // В классе NewUser

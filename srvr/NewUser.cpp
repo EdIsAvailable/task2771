@@ -1,6 +1,7 @@
 #include "NewUser.h"
 #include <iostream>
 #include<algorithm>
+
 using namespace std;
 
 NewUser::NewUser(const string& login)
