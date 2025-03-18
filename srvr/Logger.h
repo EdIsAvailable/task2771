@@ -37,11 +37,11 @@ public:
 
     void writeLog(const std::string& message);
     std::string readLog();
-    void resetReadPosition(); // Method to reset read position
+    void resetReadPosition(); // Метод для сброса укаателя (курсора)
     bool isEndOfFile();
     
 private:
     std::fstream logFile;
-    std::string _filename; // Store filename for reopening if necessary
+    std::string _filename; // Сохраняем имя файля для повторного открытия
     std::shared_mutex mutex_;
 };
