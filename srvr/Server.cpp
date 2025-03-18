@@ -233,7 +233,7 @@ Server::~Server()
 
 Server::Server()
 {
-    // Initialize as member variables (already declared in Server.h)
+    // Инициализируемся как переменные-члены (уже объявленные в Server.h)
 }
 
 void Server::MainProcess()
@@ -264,7 +264,7 @@ void Server::MainProcess()
             }
 
             ProcessChat(user);
-            delete user; // Prevent memory leak
+            delete user; // Гасим утечку памяти
             break;
         }
         case 'e':
@@ -328,12 +328,12 @@ void Server::ProcessChat(Acc* user)
     std::cin.ignore(); // Очистить буфер ввода перед чтением строки
     std::getline(std::cin, text); // Читаем строку тела сообщения
     
-    // FIXED: Actually add the message to the database
+    // добавление сообщения в бд
     _msgRepo.AddMessage(userFrom, userTo, text);
     std::cout << "Сообщение отправлено!\n";
 }
 
 Server::~Server()
 {
-    // No need to delete anything as we're using composition now
+    // В принципе, нечего удалять
 }

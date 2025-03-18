@@ -4,21 +4,21 @@
 
 using namespace std;
 
-Chat::Chat() : logger("log.txt") {} // Initialize logger with default filename
+Chat::Chat() : logger("log.txt") {} // Инициализируем файл logger по умолчанию
 
 void Chat::AddMessage(const std::string& userFrom, const std::string& userTo, const std::string& text) {
     try {
-        // Save message to database
+        // Сохраняем сообщение в базе данных
         saveMessage(userFrom, userTo, text);
         
-        // Log the message action with more detailed information
-        std::string logMessage = "Message from '" + userFrom + "' to '" + userTo + "': " + text;
+        // Записываем сообщение в лог с подробной информацией
+        std::string logMessage = "От '" + userFrom + "' Для '" + userTo + "': " + text;
         logger.writeLog(logMessage);
         
-        std::cout << "Message saved successfully!" << std::endl;
+        std::cout << "Сообщение успешно сохранено!" << std::endl;
     }
     catch (const std::exception& e) {
-        std::cerr << "Error saving message: " << e.what() << std::endl;
+        std::cerr << " Ошибка сохранения сообщения: " << e.what() << std::endl;
         logger.writeLog("ERROR: Failed to save message - " + std::string(e.what()));
     }
 }
@@ -30,20 +30,20 @@ void Chat::ViewAllMessages(void) {
         ));
         std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-        cout << "All messages in database:" << endl;
+        cout << "Все сообщения в БД:" << endl;
         while (res->next()) {
             int senderID = res->getInt("SenderID");
             int receiverID = res->getInt("ReceiverID");
             string messageText = res->getString("MessageText");
             string timestamp = res->getString("Timestamp");
 
-            cout << "From: " << senderID << " | To: " << receiverID
-                << " | Message: " << messageText
-                << " | Time: " << timestamp << endl;
+            cout << "От: " << senderID << " | To: " << receiverID
+                << " | Сообщение: " << messageText
+                << " | Время: " << timestamp << endl;
         }
         
-        // Log the view action
-        logger.writeLog("Viewed all messages");
+        // Лог просмотров
+        logger.writeLog("Сообщения просмотрены");
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
@@ -61,18 +61,18 @@ void Chat::ViewMessagesForUser(const std::string& login) {
         pstmt->setString(1, login);
         std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
 
-        cout << "Messages for user " << login << ":" << endl;
+        cout << "Сообщения для пользователя " << login << ":" << endl;
         while (res->next()) {
             int senderID = res->getInt("SenderID");
             string messageText = res->getString("MessageText");
             string timestamp = res->getString("Timestamp");
 
-            cout << "From: " << senderID << " | Message: " << messageText
-                << " | Time: " << timestamp << endl;
+            cout << "От: " << senderID << " | Сообщение: " << messageText
+                << " | Время: " << timestamp << endl;
         }
         
-        // Log the view action
-        logger.writeLog("Viewed messages for user: " + login);
+        // Лог просмотров
+        logger.writeLog("Сообщения для пользователя: " + login);
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
@@ -99,8 +99,8 @@ void Chat::ViewMessagesForAllUsers(void) {
                 << " | Time: " << timestamp << endl;
         }
         
-        // Log the view action
-        logger.writeLog("Viewed messages for all users");
+        // Лог просмотров
+        logger.writeLog("Сообщения для всех пользователей");
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
@@ -109,6 +109,6 @@ void Chat::ViewMessagesForAllUsers(void) {
 }
 
 Chat::~Chat() {
-    // No need to free memory for messages as they're stored in the database
-    logger.writeLog("Chat instance destroyed");
+    // Не требуется очищение памяти
+    logger.writeLog("Экземпляр чата удалён");
 }

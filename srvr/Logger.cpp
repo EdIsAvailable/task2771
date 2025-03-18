@@ -69,31 +69,31 @@ bool Logger::isEndOfFile() {
 #include <iostream>
 
 Logger::Logger(const std::string& filename) {
-    // Save filename for potential reopening
+    // Сохраняем имя файла для возможного повторного открытия
     _filename = filename;
     
-    // First try to open in read/write/append mode
+    //  Пробуем открыть файл в режиме чтения/записи/добавления
     logFile.open(filename, std::ios::in | std::ios::out | std::ios::app);
     
     if (!logFile.is_open()) {
-        // If file doesn't exist, create it in write mode first
-        logFile.clear(); // Clear any error flags
+        // Если файл не существует, содаём его в режиме записи
+        logFile.clear(); // Сбрасываем флаги ошибок
         logFile.open(filename, std::ios::out);
         
         if (!logFile.is_open()) {
-            throw std::runtime_error("Failed to create log file: " + filename);
+            throw std::runtime_error("Не удалось создать файл журнала: " + filename);
         }
         
-        // Close and reopen in the desired mode
+        // Закроем и снова откроем лог файл в нужном режиме
         logFile.close();
         logFile.open(filename, std::ios::in | std::ios::out | std::ios::app);
         
         if (!logFile.is_open()) {
-            throw std::runtime_error("Failed to reopen log file after creation: " + filename);
+            throw std::runtime_error("Не удалось повторно открыть файл журнала после создания: " + filename);
         }
     }
     
-    std::cout << "Logger initialized with file: " << filename << std::endl;
+    std::cout << " Bнициализирован метод Logger c log.txt: " << filename << std::endl;
 }
 
 Logger::~Logger() {
@@ -105,35 +105,35 @@ Logger::~Logger() {
 void Logger::writeLog(const std::string& message) {
     std::unique_lock<std::shared_mutex> lock(mutex_);
     
-    // Check if file is still open and in good state
+    // Проверяем, открыт ли файл log.txt
     if (!logFile.is_open() || !logFile.good()) {
-        // Try to reopen the file
+        // Пробуем снова открыть log
         if (logFile.is_open()) {
             logFile.close();
         }
-        logFile.clear(); // Clear error flags
+        logFile.clear(); // Сбрасываем флаги ошибок
         logFile.open(_filename, std::ios::in | std::ios::out | std::ios::app);
         
         if (!logFile.is_open() || !logFile.good()) {
-            throw std::runtime_error("Failed to write to log file: file is not open or in bad state");
+            throw std::runtime_error("Не удалось записать в файл журнала: файл не открыт или ипорчен");
         }
     }
     
-    // Get current timestamp
+    // Получаем актуальную метку времени
     auto now = std::chrono::system_clock::now();
     auto now_time_t = std::chrono::system_clock::to_time_t(now);
     struct tm* tm_now = localtime(&now_time_t);
     char timestamp[25];
     strftime(timestamp, sizeof(timestamp), "[%Y-%m-%d %H:%M:%S] ", tm_now);
     
-    // Write timestamped message to log
+    // Прописываем актуальную метку времени в log
     logFile << timestamp << message << std::endl;
     
-    // Ensure data is written to disk
+    // Убедимся, что данные записаны на диск
     logFile.flush();
     
     if (logFile.fail()) {
-        throw std::runtime_error("Failed to write to log file: write operation failed");
+        throw std::runtime_error("Не удалось записать в файл журнала: операция завершилась ошибкой");
     }
 }
 
@@ -141,15 +141,15 @@ std::string Logger::readLog() {
     std::shared_lock<std::shared_mutex> lock(mutex_);
 
     if (!logFile.is_open() || !logFile.good()) {
-        // Try to reopen the file in read mode
+        // открываем файл в режиме чтения
         if (logFile.is_open()) {
             logFile.close();
         }
-        logFile.clear(); // Clear error flags
+        logFile.clear(); // Сбрасываем флаги ошибок
         logFile.open(_filename, std::ios::in | std::ios::out | std::ios::app);
         
         if (!logFile.is_open()) {
-            throw std::runtime_error("Log file is not open or in bad state");
+            throw std::runtime_error("Лог не открывается или испорчен");
         }
     }
 
@@ -158,10 +158,10 @@ std::string Logger::readLog() {
         return line;
     } else {
         if (logFile.eof()) {
-            return ""; // Reached end of file, return empty string
+            return ""; // Достигнут конец файла, возвращаем пустую строку
         } else {
-            // Some other error occurred
-            throw std::runtime_error("Error reading from log file");
+            //  ошибка
+            throw std::runtime_error("Ошибка чтения файла журнала");
         }
     }
 }
@@ -169,10 +169,10 @@ std::string Logger::readLog() {
 void Logger::resetReadPosition() {
     std::unique_lock<std::shared_mutex> lock(mutex_);
     if (logFile.is_open()) {
-        logFile.clear(); // Clear any error flags
-        logFile.seekg(0, std::ios::beg); // Move read position to beginning of file
+        logFile.clear(); // Сбрасываем флаги ошибок
+        logFile.seekg(0, std::ios::beg); // Перемещение курсора (указателя?)в начало файла
     } else {
-        throw std::runtime_error("Log file is not open");
+        throw std::runtime_error("Лог не открывается");
     }
 }
 

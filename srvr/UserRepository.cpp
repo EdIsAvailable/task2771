@@ -42,30 +42,6 @@ Acc* UserRepository::NewUser()
     }
     return nullptr;
 }
-/*
-Acc* UserRepository::FindUser(string login)
-{
-    // Поиск пользователя в БД
-    try {
-        auto con = connectToDatabase();
-        std::unique_ptr<sql::PreparedStatement> pstmt(con->prepareStatement(
-            "SELECT Username, PasswordHash FROM Users WHERE Username = ?"
-        ));
-        pstmt->setString(1, login);
-        std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
-
-        if (res->next()) {
-            string username = res->getString("Username");
-            string passwordHash = res->getString("PasswordHash");
-            return new Acc(username, passwordHash, ""); // Имя можно оставить пустым, если оно не хранится в БД
-        }
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL error: " << e.what() << " (Error code: " << e.getErrorCode() << ")" << std::endl;
-    }
-    return nullptr;
-}
-*/
 
 Acc* UserRepository::FindUser(string login)
 {
